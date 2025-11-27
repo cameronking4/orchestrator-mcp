@@ -1,0 +1,24 @@
+{
+  "name": "task-orchestrator-server",
+  "version": "0.1.0",
+  "description": "MCP server for task decomposition and orchestration",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "task-orchestrator": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "zod": "^3.22.4",
+    "zod-to-json-schema": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}
