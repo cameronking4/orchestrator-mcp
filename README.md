@@ -1,6 +1,6 @@
 # Task Orchestrator MCP Server
 
-This is a **Model Context Protocol (MCP)** server that provides a dynamic task planning and orchestration tool. It allows AI agents (like Claude) to create execution plans, break them down into subtasks, track progress, and store notes/results for each step—essentially giving the AI a "working memory" for complex workflows.
+This is a **Model Context Protocol (MCP)** server that provides a dynamic task planning and orchestration tool. It allows AI agents (like Claude) to create execution plans, break them down into subtasks, track progress, and store notes/results for each step—essentially giving the AI a "working memory" for complex workflows. This MCP is the missing frontal lobe for your LLM agent. Turn stateless chat responses into stateful, goal-oriented agents that can plan, execute, and remember. 🧠 ⚡️
 
 ## Features
 
@@ -25,25 +25,36 @@ This is a **Model Context Protocol (MCP)** server that provides a dynamic task p
    ```bash
    npm run build
    ```
+4. Test the project:
+```
+{
+   "command": "node",
+   "args": [
+     "/absolute/path/to/task-orchestrator-server/build/index.js"
+   ]
+ }
+```
+*Note: Replace `/absolute/path/to/...` with the actual full path to the `build/index.js` file on your machine.*
 
-## Configuration
+## Usage
 
-To use this with an MCP client (like **Claude Desktop**), add the following to your configuration file (e.g., `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
+To use the production server with an MCP client (like **Claude Desktop**), add the following to your configuration file (e.g., `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
 
 ```json
 {
   "mcpServers": {
     "task-orchestrator": {
-      "command": "node",
-      "args": [
-        "/absolute/path/to/task-orchestrator-server/build/index.js"
-      ]
-    }
+     "command": "npx",
+     "args": [
+       "-y",
+       "@task-orchestrator/mcp@latest"
+     ]
+   }
   }
 }
 ```
 
-*Note: Replace `/absolute/path/to/...` with the actual full path to the `build/index.js` file on your machine.*
+
 
 ## Tool Usage
 
