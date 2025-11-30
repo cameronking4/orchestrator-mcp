@@ -89,6 +89,45 @@ export class TaskOrchestrator {
         printTask(this.rootTaskId, 0);
         return output;
     }
+    restoreState(state) {
+        if (!state || state.error) {
+            throw new Error("Invalid state to restore");
+        }
+        // Clear current state
+        this.tasks.clear();
+        this.rootTaskId = null;
+        // Restore tasks from state tree
+        const restoreTask = (taskData, parentId) => {
+            const task = {
+                id: taskData.id,
+                description: taskData.description,
+                status: taskData.status,
+                parentId: parentId,
+                notes: taskData.notes,
+                result: taskData.result,
+                subtasks: []
+            };
+            this.tasks.set(task.id, task);
+            // Set root task
+            if (!parentId) {
+                this.rootTaskId = task.id;
+            }
+            else {
+                const parent = this.tasks.get(parentId);
+                if (parent) {
+                    parent.subtasks.push(task.id);
+                }
+            }
+            // Restore subtasks
+            if (taskData.subtasks && Array.isArray(taskData.subtasks)) {
+                taskData.subtasks.forEach((subtaskData) => {
+                    restoreTask(subtaskData, task.id);
+                });
+            }
+        };
+        restoreTask(state);
+        return `State restored successfully. Plan has ${this.tasks.size} task(s).`;
+    }
     getStatusIcon(status) {
         switch (status) {
             case 'completed': return '✅';

@@ -1,16 +1,17 @@
 {
-  "name": "task-orchestrator-server",
-  "version": "0.1.0",
+  "name": "@task-orchestrator/mcp",
+  "version": "1.0.0",
   "description": "MCP server for task decomposition and orchestration",
   "type": "module",
   "main": "build/index.js",
   "bin": {
-    "task-orchestrator": "./build/index.js"
+    "task-orchestrator": "build/index.js"
   },
   "scripts": {
     "build": "tsc",
     "start": "node build/index.js",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.6.0",
@@ -20,5 +21,21 @@
   "devDependencies": {
     "@types/node": "^20.11.24",
     "typescript": "^5.3.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cameronking4/orchestrator-mcp.git"
+  },
+  "keywords": ["mcp", "model context protocol", "task-orchestrator", "task-planning", "task-execution", "task-management", "AI agents", "AI workflows", "AI task management", "AI task planning", "AI task execution", "AI orchestration", "AI planning", "Task MCP", "AI task MCP"],
+  "author": "Cameron King",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cameronking4/orchestrator-mcp/issues"
+  },
+  "homepage": "https://github.com/cameronking4/orchestrator-mcp#readme",
+  "files": [
+    "build/",
+    "README.md",
+    "LICENSE"
+  ]
 }
