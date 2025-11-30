@@ -1,7 +1,7 @@
 {
   "name": "@task-orchestrator/mcp",
-  "version": "1.0.0",
-  "description": "MCP server for task decomposition and orchestration",
+  "version": "1.1.0",
+  "description": "MCP server for task decomposition, orchestration, and semantic task management",
   "type": "module",
   "main": "build/index.js",
   "bin": {
